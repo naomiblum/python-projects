@@ -1,6 +1,6 @@
 import pygame
 import os
-from logic import GameManager
+from game_manager.py import GameManager  # type: ignore # Fixed import
 
 WHITE = (245, 245, 220)
 BLACK = (101, 67, 33)
@@ -30,24 +30,18 @@ def load_piece_images():
     return piece_images
 
 def draw_board(screen):
-    texture_white = pygame.image.load("assets/textures/white_square.png")
-    texture_black = pygame.image.load("assets/textures/black_square.png")
-    texture_white = pygame.transform.scale(texture_white, (SQUARE_SIZE, SQUARE_SIZE))
-    texture_black = pygame.transform.scale(texture_black, (SQUARE_SIZE, SQUARE_SIZE))
-    
     for row in range(8):
         for col in range(8):
-            texture = texture_white if (row + col) % 2 == 0 else texture_black
-            screen.blit(texture, (col * SQUARE_SIZE, row * SQUARE_SIZE))
+            color = WHITE if (row + col) % 2 == 0 else BLACK
+            rect = pygame.Rect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE)
+            pygame.draw.rect(screen, color, rect)
 
-def draw_pieces(screen, board, piece_images):
-    for row in board.grid:
-        for piece in row:
-            if piece:
-                key = f"{piece.color}_{piece.kind}"
-                gui_piece = piece_images.get(key)
-                if gui_piece:
-                    gui_piece.draw(screen, piece.position)
+def draw_pieces(screen, board, images):
+    for row in range(8):
+        for col in range(8):
+            piece = board[row][col]
+            if piece != "--":
+                screen.blit(images[piece], pygame.Rect(col * SQUARE_SIZE, row * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE))
 
 def draw_turn_indicator(screen, current_turn):
     font = pygame.font.SysFont('Arial', 32, bold=True)
@@ -59,18 +53,17 @@ def highlight_square(screen, position, color=HIGHLIGHT_COLOR):
     rect = pygame.Rect(x * SQUARE_SIZE, y * SQUARE_SIZE, SQUARE_SIZE, SQUARE_SIZE)
     pygame.draw.rect(screen, color, rect, 5)
 
-def animate_move(screen, start_pos, end_pos, piece_image, duration=0.5):
+def animate_move(screen, start_pos, end_pos, piece_image, board, images, duration=0.5):
     clock = pygame.time.Clock()
     start_x, start_y = start_pos
     end_x, end_y = end_pos
-    frames = int(duration * 60)  # Assuming 60 FPS
+    frames = int(duration * 60)
     delta_x = (end_x - start_x) * SQUARE_SIZE / frames
     delta_y = (end_y - start_y) * SQUARE_SIZE / frames
 
     for frame in range(frames):
-        screen.fill((0, 0, 0))  # Clear screen or redraw the board
         draw_board(screen)
-        draw_pieces(screen, board, piece_images)  # Redraw all pieces
+        draw_pieces(screen, board, images)
         x = start_x * SQUARE_SIZE + frame * delta_x
         y = start_y * SQUARE_SIZE + frame * delta_y
         screen.blit(piece_image, (x, y))
