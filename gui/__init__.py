@@ -1,1 +1,1 @@
-__init__.py # type: ignore
+# This file marks the directory as a Python package.

@@ -1,4 +1,3 @@
-
 class ChessPiece:
     def __init__(self, kind, color, position):
         self.kind = kind  # "pawn", "rook", etc.
@@ -10,8 +9,9 @@ class ChessPiece:
         self.position = to_position
         self.has_moved = True
         if self.kind == 'pawn':
-            if (self.color == 'white' and self.position[1] == 7) or                (self.color == 'black' and self.position[1] == 0):
-                self.kind = 'queen'  # Auto-promotion to queen
+            if (self.color == 'white' and self.position[1] == 7) or \
+               (self.color == 'black' and self.position[1] == 0):
+                self.kind = 'queen'
 
     def get_valid_moves(self, board):
         x, y = self.position
@@ -104,6 +104,7 @@ class GameManager:
         self.board = ChessBoard()
         self.current_turn = 'white'
         self.winner = None
+        self.last_moved_piece = None
         self.load_starting_position()
 
     def load_starting_position(self):
@@ -175,6 +176,7 @@ class GameManager:
 
         captured = self.board.get_piece_at(to_pos)
         self.board.move_piece(from_pos, to_pos)
+        self.last_moved_piece = f"{piece.color}_{piece.kind}"
 
         if captured and captured.kind == 'king':
             self.winner = self.current_turn
@@ -187,3 +189,13 @@ class GameManager:
 
         self.switch_turn()
         return f"{piece.kind} עבר מ-{from_pos} ל-{to_pos}. עכשיו תור {self.current_turn}."
+
+    def is_own_piece(self, pos):
+        piece = self.board.get_piece_at(pos)
+        return piece and piece.color == self.current_turn
+
+    def get_legal_moves(self, pos):
+        piece = self.board.get_piece_at(pos)
+        if piece and piece.color == self.current_turn:
+            return piece.get_valid_moves(self.board)
+        return []

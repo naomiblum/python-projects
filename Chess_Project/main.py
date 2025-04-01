@@ -1,4 +1,4 @@
-import pygame
+import pygame # type: ignore
 from gui.board_view import (
     draw_board,
     draw_pieces,
@@ -23,7 +23,6 @@ def main():
     running = True
     selected_square = None
 
-    # Load game logic and images
     game = GameManager()
     images = load_piece_images()
 
@@ -36,28 +35,26 @@ def main():
                 pos = pygame.mouse.get_pos()
                 col = pos[0] // SQUARE_SIZE
                 row = pos[1] // SQUARE_SIZE
-                clicked = (row, col)
+                clicked = (col, row)
 
                 if selected_square:
                     move_result = game.move_piece(selected_square, clicked)
                     if move_result:
-                        piece = game.board[clicked[0]][clicked[1]]
-                        piece_image = images.get(piece)
-                        if piece_image:
+                        piece_key = game.last_moved_piece
+                        if piece_key in images:
+                            piece_image = images[piece_key].image
                             animate_move(screen, selected_square, clicked, piece_image, game.board, images)
                     selected_square = None
                 else:
-                    if game.select_piece(row, col):
-                        selected_square = (row, col)
+                    if game.is_own_piece(clicked):
+                        selected_square = clicked
 
-        # Drawing
         draw_board(screen)
         draw_pieces(screen, game.board, images)
         draw_turn_indicator(screen, game.current_turn)
 
         if selected_square:
-            # Placeholder: replace with game.get_legal_moves(selected_square) if available
-            legal_moves = []
+            legal_moves = game.get_legal_moves(selected_square)
             highlight_square(screen, selected_square)
             draw_legal_moves(screen, legal_moves)
 
