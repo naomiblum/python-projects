@@ -1,5 +1,5 @@
 import pygame
-from logic import GameManager
+from engine.game_maneger import GameManager
 from gui import load_piece_images, draw_board, draw_pieces, draw_turn_indicator, highlight_square, animate_move, SQUARE_SIZE, draw_legal_moves
 
 WIDTH, HEIGHT = SQUARE_SIZE * 8, SQUARE_SIZE * 8
