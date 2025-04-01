@@ -17,13 +17,40 @@ This repository is a curated collection of Python projects designed to support a
 
 ## Topics Covered (Growing List)
 
-- Game development (Pygame)
-- GUI applications
-- File automation
-- Algorithm visualizations
-- Data structures and logic practice
-- API interaction
-- System tools and utilities
+**Beginner**
+- Variables, data types, and operators  
+- Conditional statements and loops  
+- Functions and parameters  
+- Lists, dictionaries, sets, and tuples  
+- File input/output (reading/writing files)  
+- Error handling and debugging (try/except)  
+- Basic modules and importing
+
+**Intermediate**
+- Object-Oriented Programming (classes, inheritance)  
+- Working with external libraries (e.g. `pygame`, `requests`)  
+- Modules and packages  
+- Virtual environments and `requirements.txt`  
+- Decorators and higher-order functions  
+- Working with JSON, CSV and APIs  
+- Simple GUI applications  
+- Unit testing and test-driven development  
+- Using Git and GitHub effectively
+
+**Advanced**
+- Design patterns in Python  
+- Advanced OOP (composition, polymorphism, magic methods)  
+- Generators, iterators and comprehensions  
+- Functional programming (lambda, map/filter/reduce)  
+- Concurrency: multithreading & multiprocessing  
+- Creating and using custom Python packages  
+- Performance profiling and optimization  
+- Writing clean, scalable and maintainable code  
+- Deployment techniques and Docker for Python apps
+
+---
+
+Each project in this repo is mapped to at least one of these topics.
 
 ## How to Use
 
