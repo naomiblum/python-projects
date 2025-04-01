@@ -50,6 +50,16 @@ This repository is a curated collection of Python projects designed to support a
 
 Each project in this repo is mapped to at least one of these topics.
 
+
+## Projects Overview
+
+| Project                      | Level       | Topics                                                             | Description |
+|-----------------------------|-------------|--------------------------------------------------------------------|-------------|
+| [Chess Game](Chess_Project) | Intermediate | OOP, Pygame, GUI, Game Logic, Animation, Modular Design           | A turn-based chess game with full GUI and logic, built using Pygame. |
+
+More projects coming soon...
+
+
 ## How to Use
 
 1. Clone the repository  
