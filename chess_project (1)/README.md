@@ -28,3 +28,5 @@ Make sure you have Python 3 installed.
 ```bash
 git clone https://github.com/naomiblum/python-projects.git
 cd python-projects/chess_project
+pip install tk
+python main.py
