@@ -23,21 +23,28 @@ Designed to reinforce object-oriented programming, modular design, and interacti
 - **Pygame** – for rendering the board and handling events
 - **OOP** – each piece is a class; the board and game logic are encapsulated
 
----
+⸻
+
+
 
 ## Project Structure
 
 Chess_Project/
-├── main.py                # Game entry point
-├── gui/
-│   ├── board_view.py      # Handles drawing the board, pieces, and animations
-│   ├── images.py          # Loads and scales chess piece images
+├── main.py                # Entry point: runs the game loop
+│
+├── gui/                   # GUI layer: visuals and user interaction
+│   ├── board_view.py      # Draws the board, pieces, and highlights
+│   ├── images.py          # Loads and scales piece images
 │   └── init.py
-├── engine/
-│   ├── game_manager.py    # Manages turns, moves, check, and piece interactions
+│
+├── engine/                # Game logic layer
+│   ├── game_manager.py    # Manages turns, move validation, and win conditions
 │   └── init.py
-├── assets/
+│
+├── assets/                # Game resources
 │   └── pieces/            # PNG images of all chess pieces
+│
+└── README.md              # Project documentation
 
 
 ---
