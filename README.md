@@ -6,8 +6,6 @@ This repository is a curated collection of Python projects designed to support a
 
 - **Progressive learning** — Projects increase in complexity, covering both foundational skills and advanced patterns.
 - **Real-world focus** — Each project solves a concrete problem or simulates a real application scenario.
-- **Best practices** — Clean code, modular design, and version control in every project.
-- **Open architecture** — Each project lives in its own directory with its own README and structure.
 
 ## Who Is This For?
 
