@@ -1,39 +1,30 @@
-**# Chess Project
+# ♟️ Chess Game
 
-## Description
-A Python-based chess game with a graphical user interface built using Pygame.
+A beginner-friendly chess game with a graphical board built using Python and Tkinter.  
+This project is part of my learning journey with Python, and it's still in progress 🚧
 
-## Installation
+---
+
+## 📷 Preview
+
+*Add a screenshot or GIF here showing the game window*
+
+---
+
+## 🛠 Features
+
+- 8x8 chess board drawn with alternating colors
+- Basic board setup with simplified rook placement
+- GUI built using `tkinter`
+- Code organized into `logic`, `gui`, and `main.py`
+
+---
+
+## 🚀 How to Run
+
+Make sure you have Python 3 installed.
+
 1. Clone the repository:
-   ```sh
-   git clone https://github.com/naomiblum/python-projects.git**# Chess Game
-
-A Python-based chess game with a graphical user interface built using Pygame.
-
-## Features
-- Complete chess rules implementation
-- Interactive graphical board
-- Move validation and highlighting
-- Turn-based gameplay
-- Check and checkmate detection
-- Game state tracking
-
-## What I Learned
-- Object-oriented design principles
-- Game state management
-- GUI programming with Pygame
-- Event handling
-- Graphics and asset management
-
-## Project Structure
-- `main.py` - Entry point for the application
-- `logic.py` - Core chess logic and rules implementation
-- `gui.py` - Graphical interface and rendering
-- `assets/` - Images and other resources
-
-## Installation and Running
-
-1. Ensure you have Python 3.6+ installed
-2. Install required dependencies:
-   ```bash
-   pip install pygame
+```bash
+git clone https://github.com/naomiblum/python-projects.git
+cd python-projects/chess_project
