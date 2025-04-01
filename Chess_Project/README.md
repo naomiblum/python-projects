@@ -26,25 +26,26 @@ Designed to reinforce object-oriented programming, modular design, and interacti
 ⸻
 
 
-
 ## Project Structure
 
+```
 Chess_Project/
 ├── main.py                # Entry point: runs the game loop
 │
 ├── gui/                   # GUI layer: visuals and user interaction
 │   ├── board_view.py      # Draws the board, pieces, and highlights
 │   ├── images.py          # Loads and scales piece images
-│   └── init.py
+│   └── __init__.py
 │
 ├── engine/                # Game logic layer
 │   ├── game_manager.py    # Manages turns, move validation, and win conditions
-│   └── init.py
+│   └── __init__.py
 │
 ├── assets/                # Game resources
 │   └── pieces/            # PNG images of all chess pieces
 │
 └── README.md              # Project documentation
+```
 
 
 ---
