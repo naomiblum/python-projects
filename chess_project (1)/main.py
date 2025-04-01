@@ -1,6 +1,6 @@
 import pygame
 from logic import GameManager
-from gui import load_piece_images, draw_board, draw_pieces, draw_turn_indicator, highlight_square, animate_move, SQUARE_SIZE, BLUE
+from gui import load_piece_images, draw_board, draw_pieces, draw_turn_indicator, highlight_square, animate_move, SQUARE_SIZE, draw_legal_moves
 
 WIDTH, HEIGHT = SQUARE_SIZE * 8, SQUARE_SIZE * 8
 
@@ -24,6 +24,10 @@ def main():
         if selected_pos:
             x, y = selected_pos
             highlight_square(screen, selected_pos)
+            piece = manager.board.get_piece_at(selected_pos)
+            if piece:
+                legal_moves = manager.get_legal_moves(piece)
+                draw_legal_moves(screen, legal_moves)
 
         pygame.display.flip()
 
