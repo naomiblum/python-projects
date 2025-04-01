@@ -1,32 +1,71 @@
-# ♟️ Chess Game
+# Chess Game (Pygame)
 
-A beginner-friendly chess game with a graphical board built using Python and Tkinter.  
-This project is part of my learning journey with Python, and it's still in progress 🚧
-
----
-
-## 📷 Preview
-
-*Add a screenshot or GIF here showing the game window*
+A turn-based chess game built with Python and Pygame.  
+Designed to reinforce object-oriented programming, modular design, and interactive GUIs.
 
 ---
 
-## 🛠 Features
+## Features
 
-- 8x8 chess board drawn with alternating colors
-- Basic board setup with simplified rook placement
-- GUI built using `tkinter`
-- Code organized into `logic`, `gui`, and `main.py`
+- Full 8×8 chessboard with GUI
+- Legal move validation for all pieces
+- Turn management (white and black)
+- Visual highlighting of selected piece and legal moves
+- Piece animations when moved
+- Auto-promotion to queen for pawns
+- Clean modular structure (GUI & logic separation)
 
 ---
 
-## 🚀 How to Run
+## Technologies Used
 
-Make sure you have Python 3 installed.
+- **Python 3.13+**
+- **Pygame** – for rendering the board and handling events
+- **OOP** – each piece is a class; the board and game logic are encapsulated
 
-1. Clone the repository:
+---
+
+## Project Structure
+
+Chess_Project/
+├── main.py                # Game entry point
+├── gui/
+│   ├── board_view.py      # Handles drawing the board, pieces, and animations
+│   ├── images.py          # Loads and scales chess piece images
+│   └── init.py
+├── engine/
+│   ├── game_manager.py    # Manages turns, moves, check, and piece interactions
+│   └── init.py
+├── assets/
+│   └── pieces/            # PNG images of all chess pieces
+
+
+---
+
+## Topics Covered
+
+- Object-Oriented Programming
+- Pygame and GUI design
+- Event handling and game loops
+- 2D grid logic and coordinate mapping
+- Modular project architecture
+- Animation with frame-based control
+- Asset management (loading images)
+
+---
+
+## How to Run
+
+Make sure you have Python and Pygame installed:
+
 ```bash
-git clone https://github.com/naomiblum/python-projects.git
-cd python-projects/chess_project
-pip install tk
+# Create virtual environment (optional but recommended)
+python3 -m venv .venv
+source .venv/bin/activate
+
+# Install Pygame
+pip install pygame
+
+# Run the game
+cd Chess_Project
 python main.py
