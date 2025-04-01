@@ -76,3 +76,7 @@ def animate_move(screen, start_pos, end_pos, piece_image, duration=0.5):
         screen.blit(piece_image, (x, y))
         pygame.display.flip()
         clock.tick(60)
+
+def draw_legal_moves(screen, legal_moves):
+    for move in legal_moves:
+        highlight_square(screen, move, color=(0, 255, 0))
