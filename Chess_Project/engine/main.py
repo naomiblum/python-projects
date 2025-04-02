@@ -1,21 +1,20 @@
-import os
+from Chess_Project.gui import board_view
+from Chess_Project.engine.game_manager import GameManager  # Import GameManager if needed
+from Chess_Project.utils import load_piece_images  # Import your image loader utility
+
 import sys
-
-# Add the Chess_Project directory to the Python path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-
-from Chess_Project.gui.board_view import BoardView
-from Chess_Project.engine.game_manager import GameManager
-from Chess_Project.utils.load_piece_images import load_piece_images
+print(sys.path)
 
 def main():
     """
     Main function to initialize and run the game.
     """
     import pygame
+    from Chess_Project.gui.board_view import BoardView
+    from Chess_Project.engine.game_manager import GameManager
+    from Chess_Project.utils import load_piece_images
 
     try:
-        # Initialize Pygame
         pygame.init()
         screen = pygame.display.set_mode((512, 512))  # Example size
         pygame.display.set_caption("Chess Game")
@@ -42,9 +41,6 @@ def main():
         print(f"Error in main: {e}")
     finally:
         pygame.quit()
-
-if __name__ == "__main__":
-    main()
 
 def draw_pieces(self, board, images):
     """
@@ -80,5 +76,8 @@ def load_piece_images(square_size):
         except Exception as e:
             print(f"Error loading image for {key}: {e}")
     return images
+
+if __name__ == "__main__":
+    main()
 
 
