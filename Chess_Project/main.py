@@ -44,7 +44,7 @@ def main():
                 pos = pygame.mouse.get_pos()
                 col, row = pos[0] // SQUARE_SIZE, pos[1] // SQUARE_SIZE
                 if selected_square:
-                    if game.move_piece(selected_square, (col, row)):
+                    if game.move_piece(selected_square, (row, col)):
                         selected_square = None
                     else:
                         selected_square = (col, row)
@@ -59,7 +59,7 @@ def main():
             board_view.highlight_square(selected_square)
             legal_moves = game.get_legal_moves(selected_square)
             board_view.draw_legal_moves(legal_moves)
-        draw_turn_indicator(screen, game.current_turn)
+        board_view.draw_turn_indicator(screen, game.current_turn)
         pygame.display.flip()
         clock.tick(60)
 

@@ -1,4 +1,4 @@
-## Chess Game in Python
+# Chess Game in Python
 
 A fully functional chess game with real-time UI, legal move logic, smooth animations, info panel, and an AI opponent — all built from scratch using Python and Pygame.
 
@@ -76,15 +76,22 @@ cd chess-game
 pip install pygame
 ```
 
-1. Run the game:
+3. Run the game:
 
 ```bash
 python main.py
 ```
 
-```bash
-python main.py
-```
+### Running in VS Code
+
+1. Open the project folder in VS Code.
+2. Open the `main.py` file.
+3. Press `Ctrl+Shift+P` (or `Cmd+Shift+P` on macOS) to open the command palette.
+4. Type `Python: Run Python File in Terminal` and press Enter.
+
+Alternatively:
+
+1. Right-click in the `main.py` file and select `Run Python File in Terminal`.
 
 ---
 

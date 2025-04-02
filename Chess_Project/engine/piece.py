@@ -32,6 +32,14 @@ class Piece:
                     moves.append((row + 1, new_col))
         elif self.type == "knight":
             # לוגיקה לפרש
-            pass
+            knight_moves = [
+                (-2, -1), (-2, 1), (-1, -2), (-1, 2),
+                (1, -2), (1, 2), (2, -1), (2, 1)
+            ]
+            for move in knight_moves:
+                new_row, new_col = row + move[0], col + move[1]
+                if 0 <= new_row < 8 and 0 <= new_col < 8:
+                    if board[new_row][new_col] is None or board[new_row][new_col][0] != self.color:
+                        moves.append((new_row, new_col))
         # המשך לוגיקה לכל כלי
         return moves
