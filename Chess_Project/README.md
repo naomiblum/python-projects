@@ -140,7 +140,3 @@ If the game doesn't run, try the following:
 Naomi Blum  
 [LinkedIn](https://www.linkedin.com/in/your-profile)  
 [GitHub](https://github.com/your-username)
-```markdown
-print(images.keys())
-```
-print(images.keys())
