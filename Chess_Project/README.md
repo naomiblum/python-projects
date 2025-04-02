@@ -64,20 +64,38 @@ project-root/
 ## How to Run
 
 1. Clone the repo:
+
 ```bash
 git clone https://github.com/your-username/chess-game.git
 cd chess-game
 ```
 
 2. Install dependencies:
+
 ```bash
 pip install pygame
 ```
 
-3. Run the game:
+1. Run the game:
+
 ```bash
 python main.py
 ```
+
+```bash
+python main.py
+```
+
+---
+
+## Troubleshooting
+
+If the game doesn't run, try the following:
+
+- Make sure you have Python 3.6 or higher installed.
+- Ensure that Pygame is installed correctly (`pip install pygame`).
+- Verify that all image files are in the `assets/pieces/` directory.
+- Check for any error messages in the console and address them accordingly.
 
 ---
 

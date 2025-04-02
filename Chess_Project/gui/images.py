@@ -14,6 +14,8 @@ def load_piece_images(square_size):
             try:
                 image = pygame.transform.scale(pygame.image.load(path), 
                                                      (square_size, square_size))
+                images[key] = image
             except FileNotFoundError:
                 print(f"Error: Missing file {path}")
+                return {}
     return images

@@ -14,7 +14,7 @@ The chess game is designed using object-oriented programming (OOP) principles. T
 
 State modeling is crucial in a chess game to ensure that each board state is valid and reversible. This allows for features like undoing moves and checking for checkmate conditions.
 
-### Key Concepts
+### AI Key Concepts
 
 - **Board State**: The current arrangement of pieces on the board.
 - **Move Validation**: Ensuring that a move is legal according to chess rules.
@@ -24,7 +24,12 @@ State modeling is crucial in a chess game to ensure that each board state is val
 
 Generating legal moves for each piece is a fundamental aspect of the game logic. This involves filtering moves based on the current game state to ensure that they are valid and do not put the player's king in check.
 
-### Key Concepts
+### UX Key Concepts
+
+- **Heuristic Evaluation**: The AI evaluates moves based on a heuristic function that assigns a score to each board state.
+- **Minimax Algorithm**: A decision-making algorithm used to minimize the possible loss for a worst-case scenario.
+- **Alpha-Beta Pruning**: An optimization technique for the minimax algorithm that reduces the number of nodes evaluated in the search tree.
+- **Depth-Limited Search**: Limiting the depth of the search tree to balance performance and decision quality.
 
 - **Move Filtering**: Removing illegal moves from the list of possible moves for a piece.
 - **Check Avoidance**: Ensuring that a move does not leave the player's king in check.
@@ -41,8 +46,24 @@ The game includes a simple AI opponent that can make moves based on predefined s
 ## UX Principles
 
 User experience (UX) is an important aspect of the game design. The game provides real-time feedback, smooth animations, and clear information presentation to enhance the player's experience.
-
 ### Key Concepts
+
+- **Heuristic Evaluation**: The AI evaluates moves based on a heuristic function that assigns a score to each board state.
+- **Minimax Algorithm**: A decision-making algorithm used to minimize the possible loss for a worst-case scenario.
+- **Alpha-Beta Pruning**: An optimization technique for the minimax algorithm that reduces the number of nodes evaluated in the search tree.
+- **Depth-Limited Search**: Limiting the depth of the search tree to balance performance and decision quality.
+- **Move Filtering**: Removing illegal moves from the list of possible moves for a piece.
+- **Check Avoidance**: Ensuring that a move does not leave the player's king in check.
+- **Real-Time Feedback**: Providing immediate visual feedback for player actions.
+- **Animations**: Smooth animations for piece movements to enhance visual appeal.
+- **Info Panel**: Displaying relevant information about the game state, such as the current turn and captured pieces.
+
+- **Heuristic Evaluation**: The AI evaluates moves based on a heuristic function that assigns a score to each board state.
+- **Minimax Algorithm**: A decision-making algorithm used to minimize the possible loss for a worst-case scenario.
+- **Alpha-Beta Pruning**: An optimization technique for the minimax algorithm that reduces the number of nodes evaluated in the search tree.
+- **Depth-Limited Search**: Limiting the depth of the search tree to balance performance and decision quality.
+- **Move Filtering**: Removing illegal moves from the list of possible moves for a piece.
+- **Check Avoidance**: Ensuring that a move does not leave the player's king in check.
 
 - **Real-Time Feedback**: Providing immediate visual feedback for player actions.
 - **Animations**: Smooth animations for piece movements to enhance visual appeal.

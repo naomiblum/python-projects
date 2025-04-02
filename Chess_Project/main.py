@@ -3,10 +3,9 @@ import os
 import sys
 
 # Add the Chess_Project directory to the Python path
-sys.path.append(os.path.dirname(os.path.abspath(__file__)))
+from engine.game_manager import GameManager
 from gui.board_view import BoardView, draw_turn_indicator, highlight_square, draw_legal_moves
 from gui.images import load_piece_images
-from engine.game_manager import GameManager
 
 # Constants
 WIDTH, HEIGHT = 800, 800
@@ -17,17 +16,25 @@ def main():
     הפונקציה הראשית שמריצה את המשחק.
     מנהלת את לולאת המשחק, אירועים, ותצוגה.
     """
-    pygame.init()
-    screen = pygame.display.set_mode((WIDTH, HEIGHT))
-    pygame.display.set_caption("Chess Game")
+    try:
+        pygame.init()
+        screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        pygame.display.set_caption("Chess Game")
+    except Exception as e:
+        print(f"Error initializing Pygame: {e}")
+        return
 
     clock = pygame.time.Clock()
     running = True
     selected_square = None
 
-    game = GameManager()
-    images = load_piece_images(SQUARE_SIZE)
-    board_view = BoardView(screen, SQUARE_SIZE)
+    try:
+        game = GameManager()
+        images = load_piece_images(SQUARE_SIZE)
+        board_view = BoardView(screen, SQUARE_SIZE)
+    except Exception as e:
+        print(f"Error initializing game components: {e}")
+        return
 
     while running:
         for event in pygame.event.get():
