@@ -1,79 +1,117 @@
-# Chess Game (Pygame)
+# Chess Game in Python
 
-A turn-based chess game built with Python and Pygame.  
-Designed to reinforce object-oriented programming, modular design, and interactive GUIs.
+A fully functional chess game with real-time UI, legal move logic, smooth animations, info panel, and an AI opponent — all built from scratch using Python and Pygame.
 
 ---
 
 ## Features
 
-- Full 8×8 chessboard with GUI
-- Legal move validation for all pieces
-- Turn management (white and black)
-- Visual highlighting of selected piece and legal moves
-- Piece animations when moved
-- Auto-promotion to queen for pawns
-- Clean modular structure (GUI & logic separation)
+- Full implementation of chess rules: piece movement, turn logic, check, and checkmate
+- Object-oriented design with clean code structure
+- Sidebar info panel showing selected piece details
+- Highlighting of legal moves and check states
+- Smooth animation on piece movement
+- Undo functionality
+- AI opponent (random and greedy mode)
 
 ---
 
 ## Technologies Used
 
-- **Python 3.13+**
-- **Pygame** – for rendering the board and handling events
-- **OOP** – each piece is a class; the board and game logic are encapsulated
-
-⸻
-
-
-## Project Structure
-
-```
-Chess_Project/
-├── main.py                # Entry point: runs the game loop
-│
-├── gui/                   # GUI layer: visuals and user interaction
-│   ├── board_view.py      # Draws the board, pieces, and highlights
-│   ├── images.py          # Loads and scales piece images
-│   └── __init__.py
-│
-├── engine/                # Game logic layer
-│   ├── game_manager.py    # Manages turns, move validation, and win conditions
-│   └── __init__.py
-│
-├── assets/                # Game resources
-│   └── pieces/            # PNG images of all chess pieces
-│
-└── README.md              # Project documentation
-```
-
+- Python 3.10
+- Pygame
+- Object-Oriented Programming
+- Basic AI Algorithms (Random / Greedy move selection)
 
 ---
 
-## Topics Covered
+## System Architecture
 
-- Object-Oriented Programming
-- Pygame and GUI design
-- Event handling and game loops
-- 2D grid logic and coordinate mapping
-- Modular project architecture
-- Animation with frame-based control
-- Asset management (loading images)
+```text
+project-root/
+│
+├── main.py                      # Main game loop and event handling
+│
+├── engine/                      # Core logic and game mechanics
+│   ├── game_manager.py          # Manages turns, game state, AI logic
+│   ├── board.py                 # Board representation and operations
+│   └── piece.py                 # ChessPiece class and valid move logic
+│
+├── gui/                         # User Interface rendering and interaction
+│   ├── board_view.py            # Drawing the board, pieces, UI elements
+│   ├── animate_move.py          # Smooth movement animations
+│   └── graphics_utils.py        # Sidebar info panel, icons, visuals
+│
+├── assets/                      # Visual resources
+│   ├── pieces/                  # PNGs of chess pieces
+│   └── icons/                   # Sidebar icons for each piece type
+│
+└── README.md                    # Project documentation
+```
+
+---
+
+## Theoretical Concepts
+
+- **Object-Oriented Architecture** — separation of concerns (board, piece, logic, GUI)
+- **State Modeling** — each board state is validatable and reversible
+- **Legal Move Generation** — move filtering based on game state (avoiding check)
+- **AI Decision-Making** — implemented random and greedy bots based on material gain
+- **UX Principles** — real-time feedback, animations, clear info presentation
 
 ---
 
 ## How to Run
 
-Make sure you have Python and Pygame installed:
-
+1. Clone the repo:
 ```bash
-# Create virtual environment (optional but recommended)
-python3 -m venv .venv
-source .venv/bin/activate
+git clone https://github.com/your-username/chess-game.git
+cd chess-game
+```
 
-# Install Pygame
+2. Install dependencies:
+```bash
 pip install pygame
+```
 
-# Run the game
-cd Chess_Project
+3. Run the game:
+```bash
 python main.py
+```
+
+---
+
+## Screenshots & Demo
+
+> *(add images once everything runs smoothly)*
+
+- ![Screenshot](assets/screenshot.png)
+- ![Demo](assets/demo.gif)
+
+---
+
+## What I Learned
+
+- How to translate complex systems like chess into structured OOP code
+- Managing internal state changes with clarity and predictability
+- Creating graphical interfaces with live feedback and user interaction
+- Implementing simple AI decision systems and integrating them into gameplay
+- Organizing a real-world codebase with modular, scalable design
+
+---
+
+## Next Possible Enhancements
+
+- Sound effects on move and capture
+- Smarter AI using Minimax or Alpha-Beta pruning
+- Full draw conditions (repetition, insufficient material)
+- Move history display and saving/loading games
+- Online multiplayer mode (future plan)
+
+---
+
+## Author
+
+Naomi Blum  
+[LinkedIn](https://www.linkedin.com/in/your-profile)  
+[GitHub](https://github.com/your-username)
