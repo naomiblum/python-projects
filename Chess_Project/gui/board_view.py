@@ -30,15 +30,17 @@ class BoardView:
 
     def draw_pieces(self, board, images):
         """
-        מצייר את הכלים על הלוח.
+        Draws the chess pieces on the board.
         """
-        for row in range(8):
-            for col in range(8):
-                piece = board[row][col]
+        for row_index, row in enumerate(board):
+            for col_index, piece in enumerate(row):
                 if piece:
-                    key = f"{piece[0]}_{piece[1]}"
-                    self.screen.blit(images[key], 
-                                     (col * self.square_size, row * self.square_size))
+                    color, piece_type = piece
+                    key = f"{color}_{piece_type}"
+                    if key in images:
+                        self.screen.blit(images[key], (col_index * self.square_size, row_index * self.square_size))
+                    else:
+                        print(f"Warning: Missing image for {key}")
 
     def highlight_square(self, pos):
         """

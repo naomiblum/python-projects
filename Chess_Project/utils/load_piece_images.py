@@ -3,7 +3,8 @@ import os
 
 def load_piece_images(square_size):
     """
-    טוען את תמונות הכלים.
+    Loads chess piece images and scales them to the given square size.
+    Returns a dictionary with keys like 'black_rook' and 'white_pawn'.
     """
     images = {}
     base_path = os.path.join(os.path.dirname(__file__), "../assets/pieces")

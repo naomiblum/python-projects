@@ -16,7 +16,7 @@ class GameManager:
         """
         piece = self.board.board[start_pos[1]][start_pos[0]]
         if piece and piece[0] == self.current_turn:
-            # בדיקת חוקיות המהלך
+            # Check if the move is legal
             if end_pos in self.get_legal_moves(start_pos):
                 self.board.move_piece(start_pos, end_pos)
                 self.current_turn = "black" if self.current_turn == "white" else "white"
