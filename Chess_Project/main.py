@@ -1,5 +1,6 @@
-pip install pygame
 import pygame
+import os
+import shutil
 from Chess_Project.gui.board_view import (
     draw_board,
     draw_pieces,
@@ -9,21 +10,6 @@ from Chess_Project.gui.board_view import (
     animate_move
 )
 from Chess_Project.gui.images import load_piece_images
-from Chess_Project.engine.game_manager import GameManager
-
-# ...existing code...
-import pygame
-import os
-import shutil
-from gui.board_view import (
-    draw_board,
-    draw_pieces,
-    draw_turn_indicator,
-    highlight_square,
-    draw_legal_moves,
-    animate_move
-)
-from gui.images import load_piece_images
 from Chess_Project.engine.game_manager import GameManager
 
 # Constants
@@ -47,7 +33,6 @@ for item in source_files:
         print(f"Error moving '{item}' to '{destination_dir}': {e}")
 
 # Main entry point for the chess game
-
 def main():
     print("Welcome to Chess Game!")
     pygame.init()
