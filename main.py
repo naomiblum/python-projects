@@ -6,13 +6,13 @@ from gui.board_view import (
     highlight_square,
     draw_legal_moves,
     animate_move,
-    draw_info_panel  # תוספת חדשה
+    draw_info_panel
 )
 from gui.images import load_piece_images
 from engine.game_manager import GameManager
 
 # Constants
-WIDTH, HEIGHT = 1000, 800  # הגדלת חלון לגרפיקה + פאנל מידע
+WIDTH, HEIGHT = 800, 800
 SQUARE_SIZE = 100
 
 def main():
@@ -38,7 +38,7 @@ def main():
                 row = pos[1] // SQUARE_SIZE
                 clicked = (col, row)
 
-                if col < 8:  # אם לוחצים בתוך הלוח עצמו
+                if col < 8:
                     if selected_square:
                         move_result = game.move_piece(selected_square, clicked)
                         if move_result:
@@ -51,11 +51,10 @@ def main():
                         if game.is_own_piece(clicked):
                             selected_square = clicked
 
-        # ציור לוח
         draw_board(screen)
         draw_pieces(screen, game.board, images)
         draw_turn_indicator(screen, game.current_turn)
-        draw_info_panel(screen, game)  # הפאנל החדש מימין
+        draw_info_panel(screen, game)
 
         if selected_square:
             legal_moves = game.get_legal_moves(selected_square)

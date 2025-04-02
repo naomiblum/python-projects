@@ -69,3 +69,40 @@ More projects coming soon...
 ```bash
 git clone https://github.com/YOUR_USERNAME/python-projects.git
 cd python-projects/Some_Project
+```
+
+## Project Structure
+
+```plaintext
+.
+├── main.py
+├── engine/
+│   ├── board.py
+│   ├── piece.py
+│   └── game_manager.py
+├── gui/
+│   ├── board_view.py
+│   ├── animate_move.py
+│   ├── graphics_utils.py
+├── assets/
+│   └── pieces/   
+├── README.md
+└── theory.md
+```
+
+## How to Run
+
+1. Ensure you have Python installed on your system.
+2. Clone the repository and navigate to the project directory.
+3. Install the required dependencies using pip:
+   ```bash
+   pip install -r requirements.txt
+   ```
+4. Run the main script:
+   ```bash
+   python main.py
+   ```
+
+## Author
+
+This project was created by Naomi Blum. If you have any questions or feedback, feel free to reach out.
