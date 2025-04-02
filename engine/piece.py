@@ -16,13 +16,20 @@ class Piece:
         מחזיר את כל המהלכים החוקיים לכלי.
         """
         moves = []
+        row, col = start_pos
         if self.type == "pawn":
             # לוגיקה לרגלי
             direction = -1 if self.color == "white" else 1
-            row, col = start_pos
-            if 0 <= row + direction < 8:
-                if board[row + direction][col] is None:
-                    moves.append((col, row + direction))
+            new_row = row + direction
+            if 0 <= new_row < 8:
+                # תנועה קדימה
+                if board[new_row][col] is None:
+                    moves.append((col, new_row))
+                # תקיפה באלכסון
+                if col > 0 and board[new_row][col - 1] is not None and board[new_row][col - 1][0] != self.color:
+                    moves.append((col - 1, new_row))
+                if col < 7 and board[new_row][col + 1] is not None and board[new_row][col + 1][0] != self.color:
+                    moves.append((col + 1, new_row))
         elif self.type == "knight":
             # לוגיקה לפרש
             pass
