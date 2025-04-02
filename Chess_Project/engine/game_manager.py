@@ -1,4 +1,4 @@
-from engine.board import Board
+from Chess_Project.engine.board import Board
 from engine.piece import Piece
 
 
