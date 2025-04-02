@@ -5,8 +5,7 @@ from gui.board_view import (
     draw_turn_indicator,
     highlight_square,
     draw_legal_moves,
-    animate_move,
-    draw_info_panel
+    animate_move
 )
 from gui.images import load_piece_images
 from engine.game_manager import GameManager
@@ -54,7 +53,6 @@ def main():
         draw_board(screen)
         draw_pieces(screen, game.board, images)
         draw_turn_indicator(screen, game.current_turn)
-        draw_info_panel(screen, game)
 
         if selected_square:
             legal_moves = game.get_legal_moves(selected_square)

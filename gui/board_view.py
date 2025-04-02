@@ -1,20 +1,24 @@
 import sys
 import os
+import pygame
 
 # Add the parent directory to sys.path to ensure the engine module is accessible
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'agent')))
 try:
-    from engine.game_manager import GameManager
+    from engine.board import ChessBoard
+    from engine.piece import ChessPiece
 except ModuleNotFoundError:
     # Verify the correct path for the 'engine' module
     engine_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', 'engine'))
     if engine_path not in sys.path:
         sys.path.append(engine_path)
     try:
-        from engine.game_manager import GameManager
+        from engine.board import ChessBoard
+        from engine.piece import ChessPiece
     except ModuleNotFoundError:
-        raise ImportError("Ensure the 'engine' directory exists and contains 'game_manager.py'. Check the import path.")
+        raise ImportError("Ensure the 'engine' directory exists and contains 'board.py' and 'piece.py'. Check the import path.")
+
 # קבועים עיצוביים
 WHITE = (245, 245, 220)
 BLACK = (101, 67, 33)
@@ -53,7 +57,7 @@ def draw_board(screen):
 def draw_pieces(screen, board, images):
     for row in range(8):
         for col in range(8):
-            piece = board[row][col]
+            piece = board.get_piece_at((col, row))
             if piece and piece.color and piece.kind:
                 key = f"{piece.color}_{piece.kind}"
                 if key in images:
