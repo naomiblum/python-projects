@@ -9,18 +9,21 @@ class Board:
 
     def create_initial_board(self):
         """
-        יוצר את מצב הלוח ההתחלתי עם כל הכלים במקומם.
+        Creates the initial board state with all pieces in their starting positions.
         """
         board = [[None for _ in range(8)] for _ in range(8)]
-        # הוספת רגלים
+        # Add pawns
         for col in range(8):
             board[1][col] = ("black", "pawn")
             board[6][col] = ("white", "pawn")
-        # הוספת כלים אחרים
+        # Add other pieces
         pieces = ["rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"]
         for col, piece in enumerate(pieces):
             board[0][col] = ("black", piece)
             board[7][col] = ("white", piece)
+        print("Initial board state:")  # Debugging: Print board state
+        for row in board:
+            print(row)
         return board
 
     def move_piece(self, start_pos, end_pos):
@@ -30,6 +33,7 @@ class Board:
         piece = self.board[start_pos[1]][start_pos[0]]
         self.board[start_pos[1]][start_pos[0]] = None
         self.board[end_pos[1]][end_pos[0]] = piece
+        print(self.board)
 
     def get_piece(self, pos):
         """

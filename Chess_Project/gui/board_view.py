@@ -40,7 +40,7 @@ class BoardView:
                     if key in images:
                         self.screen.blit(images[key], (col_index * self.square_size, row_index * self.square_size))
                     else:
-                        print(f"Warning: Missing image for {key}")
+                        print(f"Warning: Missing image for {key}")  # Debugging: Warn about missing images
 
     def highlight_square(self, pos):
         """

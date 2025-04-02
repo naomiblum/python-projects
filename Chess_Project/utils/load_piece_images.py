@@ -11,11 +11,12 @@ def load_piece_images(square_size):
     for piece in ["pawn", "knight", "bishop", "rook", "queen", "king"]:
         for color in ["white", "black"]:
             key = f"{color}_{piece}"
-            path = os.path.join(base_path, f"{key}.png")
+            path = os.path.join(base_path, f"{color.capitalize()}{piece.capitalize()}.png")
             try:
                 image = pygame.transform.scale(pygame.image.load(path), 
                                                (square_size, square_size))
                 images[key] = image
             except FileNotFoundError:
                 print(f"Error: Missing file {path}")
+    print(f"Loaded images: {images.keys()}")  # Debugging: Print loaded keys
     return images
