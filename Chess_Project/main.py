@@ -1,3 +1,4 @@
+pip install pygame
 import pygame
 from Chess_Project.gui.board_view import (
     draw_board,
