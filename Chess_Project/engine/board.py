@@ -1,54 +1,62 @@
-from engine.piece import Piece
+from typing import List, Tuple, Optional, Dict
+from .piece import Piece
 
 class Board:
-    """
-    מחלקה שמייצגת את לוח השחמט ומנהלת את מצב הכלים.
-    """
+    """Represents the chess board and its state"""
+    
     def __init__(self):
-        self.board = self.create_initial_board()
-
-    def create_initial_board(self):
-        """
-        Creates the initial board state with all pieces in their starting positions.
-        """
-        board = [[None for _ in range(8)] for _ in range(8)]
-        # Add pawns
+        """Initialize an 8x8 board with pieces in starting positions"""
+        # Create empty 8x8 board
+        self.squares: List[List[Optional[Piece]]] = [[None for _ in range(8)] for _ in range(8)]
+        self.setup_pieces()
+        
+    def setup_pieces(self):
+        """Place all pieces in their starting positions"""
+        # Setup pawns
         for col in range(8):
-            board[1][col] = ("black", "pawn")
-            board[6][col] = ("white", "pawn")
-        # Add other pieces
-        pieces = ["rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"]
-        for col, piece in enumerate(pieces):
-            board[0][col] = ("black", piece)
-            board[7][col] = ("white", piece)
-        print("Initial board state:")  # Debugging: Print board state
-        for row in board:
-            print(row)
-        return board
-
-    def move_piece(self, start_pos, end_pos):
-        """
-        מזיז כלי ממיקום אחד לאחר.
-        """
-        piece = self.board[start_pos[1]][start_pos[0]]
-        self.board[start_pos[1]][start_pos[0]] = None
-        self.board[end_pos[1]][end_pos[0]] = piece
-        print(self.board)
-
-    def get_piece(self, pos):
-        """
-        מחזיר את הכלי במיקום מסוים.
-        """
-        return self.board[pos[1]][pos[0]]
-
-    def is_empty(self, pos):
-        """
-        Checks if the square at the given position is empty.
-        Returns True if the square is empty, False otherwise.
-        """
-        return self.board[pos[1]][pos[0]] is None
-
-    def display(self):
-        """Displays the board state in a user-friendly format."""
-        for row in self.board:
-            print(" ".join([str(piece) if piece else "." for piece in row]))
+            self.squares[1][col] = Piece("black", "pawn", (1, col))
+            self.squares[6][col] = Piece("white", "pawn", (6, col))
+        
+        # Setup other pieces
+        piece_order = ["rook", "knight", "bishop", "queen", "king", "bishop", "knight", "rook"]
+        for col in range(8):
+            self.squares[0][col] = Piece("black", piece_order[col], (0, col))
+            self.squares[7][col] = Piece("white", piece_order[col], (7, col))
+    
+    def get_piece(self, row: int, col: int) -> Optional[Piece]:
+        """Get the piece at the specified position"""
+        if 0 <= row < 8 and 0 <= col < 8:
+            return self.squares[row][col]
+        return None
+    
+    def move_piece(self, from_pos: Tuple[int, int], to_pos: Tuple[int, int]) -> bool:
+        """Move a piece from one position to another"""
+        from_row, from_col = from_pos
+        to_row, to_col = to_pos
+        
+        if not (0 <= from_row < 8 and 0 <= from_col < 8 and 0 <= to_row < 8 and 0 <= to_col < 8):
+            return False
+        
+        piece = self.squares[from_row][from_col]
+        if piece is None:
+            return False
+        
+        # Update piece position
+        self.squares[to_row][to_col] = piece
+        self.squares[from_row][from_col] = None
+        piece.position = (to_row, to_col)
+        return True
+    
+    def is_valid_position(self, row: int, col: int) -> bool:
+        """Check if a position is valid on the board"""
+        return 0 <= row < 8 and 0 <= col < 8
+    
+    def get_all_pieces(self, color: str) -> List[Tuple[Tuple[int, int], Piece]]:
+        """Get all pieces of a specific color"""
+        result = []
+        for row in range(8):
+            for col in range(8):
+                piece = self.squares[row][col]
+                if piece and piece.color == color:
+                    result.append(((row, col), piece))
+        return result

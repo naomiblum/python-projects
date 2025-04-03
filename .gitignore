@@ -182,3 +182,36 @@ __pycache__/
 
 # VS Code settings
 .vscode/
+
+# Chess Project specific
+Chess_Project/assets/pieces/*.png
+Chess_Project/logs/
+Chess_Project/saves/
+Chess_Project/config/*.ini
+
+# Mac specific
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Python virtual environment (specific to your project)
+Chess_Project/myenv/
+
+# IDE specific
+*.swp
+*.swo
+.idea/
+.vscode/settings.json
+
+# Pygame specific
+*.pygame_save
+
+# Debug logs
+debug.log
+error.log
+chess_game.log
+
+# Test coverage
+.coverage
+htmlcov/

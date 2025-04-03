@@ -16,6 +16,54 @@ A fully functional chess game with real-time UI, legal move logic, smooth animat
 
 ---
 
+## Using Git Version Control
+
+This project is set up to use Git for version control. Here's how to work with it:
+
+### Initial Setup
+
+If you haven't already initialized Git, run:
+
+```bash
+python init_git.py
+```
+
+This will set up Git, make an initial commit of your files, and guide you through configuration.
+
+### Common Git Commands
+
+- Check status of your changes:
+  ```bash
+  git status
+  ```
+
+- Add changes to be committed:
+  ```bash
+  git add .
+  ```
+
+- Commit your changes:
+  ```bash
+  git commit -m "Description of changes"
+  ```
+
+- View commit history:
+  ```bash
+  git log
+  ```
+
+- Create a new branch for features:
+  ```bash
+  git checkout -b feature-name
+  ```
+
+- Push changes to GitHub (if you've set up a remote):
+  ```bash
+  git push
+  ```
+
+---
+
 ## Technologies Used
 
 - Python 3.10
@@ -140,7 +188,3 @@ If the game doesn't run, try the following:
 Naomi Blum  
 [LinkedIn](https://www.linkedin.com/in/your-profile)  
 [GitHub](https://github.com/your-username)
-```markdown
-print(images.keys())
-```
-print(images.keys())
