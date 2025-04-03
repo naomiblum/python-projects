@@ -68,11 +68,10 @@ The topics are organized by skill level: from foundational programming to scalab
 Each project in this repo is mapped to at least one of these topics.
 
 
-## Projects Overview
-
-| Project                      | Level       | Topics                                                             | Description |
-|-----------------------------|-------------|--------------------------------------------------------------------|-------------|
-| [Chess Game](Chess_Project) | Intermediate | OOP, Pygame, GUI, Game Logic, Animation, Modular Design           | A turn-based chess game with full GUI and logic, built using Pygame. |
+| Project      | Level        | Topics                                                             | Description                                                                                  |
+|--------------|--------------|---------------------------------------------------------------------|----------------------------------------------------------------------------------------------|
+| Chess Game   | Intermediate | OOP, Pygame, GUI, Game Logic, Animation, Modular Design            | A turn-based chess game with full GUI and logic, built using Pygame.                         |
+| FlowSense    | Intermediate | Pandas, Data Cleaning, Behavioral Analytics, Clustering, Visualization | Detects hidden inefficiencies in team dynamics based on behavioral patterns in task data.   |
 
 More projects coming soon...
 
