@@ -3,10 +3,19 @@ import sys
 from typing import Optional, Tuple, List
 import pygame
 
-# Fix imports to match your project structure
-from engine.game_manager import GameManager
-from gui.board_view import BoardView
-from utils.load_pieces import load_piece_images
+# Initialize pygame early to catch any errors
+pygame.init()
+
+# Fix any imports to match your project structure
+try:
+    from engine.game_manager import GameManager
+    from gui.board_view import BoardView
+    from utils.load_pieces import load_piece_images
+except ImportError as e:
+    print(f"Error importing project modules: {e}")
+    print("Please make sure all required files and directories exist.")
+    print("Run check_structure.py to verify your project structure.")
+    sys.exit(1)
 
 # Game constants
 WIDTH, HEIGHT = 800, 800
@@ -15,22 +24,20 @@ FPS = 60
 
 def init_pygame() -> pygame.surface.Surface:
     """Initialize Pygame and create window"""
-    # Force cleanup of any existing pygame instance
-    pygame.quit()
-    pygame.init()
-    
-    if pygame.get_error():
-        raise Exception(f"Pygame initialization error: {pygame.get_error()}")
-    
     # Create window with error checking
     try:
         screen = pygame.display.set_mode((WIDTH, HEIGHT))
         if not screen:
             raise Exception("Failed to create display surface")
         pygame.display.set_caption("Chess Game")
+        
+        # Initialize font for BoardView
+        pygame.font.init()
+        
         return screen
     except Exception as e:
-        raise Exception(f"Display initialization error: {e}")
+        print(f"Display initialization error: {e}")
+        sys.exit(1)
 
 def handle_move(game: GameManager, pos: Tuple[int, int], selected_square: Optional[Tuple[int, int]]) -> Optional[Tuple[int, int]]:
     """Handle piece movement logic"""
@@ -51,26 +58,28 @@ def main():
         # Initialize Pygame and create window
         screen = init_pygame()
         
-        # Verify assets directory exists
-        assets_path = os.path.join("Chess_Project", "assets", "pieces")
-        if not os.path.exists(assets_path):
-            raise FileNotFoundError(f"Assets directory not found: {assets_path}")
+        # Fix assets path - use relative path from current file
+        assets_path = os.path.join(os.path.dirname(__file__), "assets", "pieces")
+        
+        # Create assets directory if it doesn't exist
+        os.makedirs(assets_path, exist_ok=True)
+        
+        print(f"Using assets path: {assets_path}")
         
         # Initialize components with specific error handling
         try:
+            # Use placeholders if images can't be loaded
             images = load_piece_images(SQUARE_SIZE)
-            if not images:
-                raise ValueError("No chess piece images loaded")
             
             game = GameManager()
             if not hasattr(game, 'board'):
                 raise AttributeError("GameManager initialized without board")
             
             board_view = BoardView(screen, SQUARE_SIZE)
+            # Initialize fonts for coordinates in BoardView
+            board_view.coordinate_font = pygame.font.SysFont("Arial", 18)
+            board_view.font = pygame.font.SysFont("Arial", 18)
             
-        except FileNotFoundError as e:
-            print(f"Missing files error: {e}")
-            return
         except Exception as e:
             print(f"Component initialization error: {e}")
             return
@@ -108,6 +117,10 @@ def main():
                         legal_moves = game.get_legal_moves(selected_square)
                         if legal_moves:
                             board_view.draw_legal_moves(legal_moves)
+                    
+                    # Draw game status
+                    game_state = "check" if game.is_in_check(game.current_player) else "playing"
+                    board_view.draw_game_status(game_state, game.current_player)
                     
                     pygame.display.flip()
                     clock.tick(FPS)

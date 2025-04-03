@@ -1,34 +1,34 @@
 import pygame
-from typing import List, Tuple, Dict, Optional
+from typing import List, Tuple, Dict, Any, Optional
 
 class BoardView:
-    """Class for rendering the chess board and pieces."""
+    """Handles rendering of the chess board and pieces"""
     
     def __init__(self, screen: pygame.Surface, square_size: int):
+        """Initialize the board view"""
         self.screen = screen
         self.square_size = square_size
-        self.colors = {
-            "light": (240, 217, 181),  # Light squares
-            "dark": (181, 136, 99),    # Dark squares
-            "highlight": (124, 252, 0, 150),  # Selected piece highlight
-            "legal_move": (106, 90, 205, 150)  # Legal move indicator
-        }
-        # Initialize fonts
-        self.font = pygame.font.SysFont(None, 24)
-        self.coordinate_font = pygame.font.SysFont(None, 20)
-
+        
+        # Colors for the board
+        self.light_square = (240, 217, 181)  # Light brown
+        self.dark_square = (181, 136, 99)    # Dark brown
+        self.highlight_color = (124, 252, 0, 128)  # Semi-transparent green
+        self.move_indicator = (50, 200, 50, 150)   # Semi-transparent green circle
+        
+        # Fonts for drawing text - initialized in main.py
+        self.coordinate_font = None
+        self.font = None
+    
     def draw_board(self):
-        """Draw the chess board squares."""
+        """Draw the chess board squares"""
         for row in range(8):
             for col in range(8):
-                color = self.colors["light"] if (row + col) % 2 == 0 else self.colors["dark"]
-                rect = pygame.Rect(
-                    col * self.square_size, 
-                    row * self.square_size, 
-                    self.square_size, 
-                    self.square_size
-                )
-                pygame.draw.rect(self.screen, color, rect)
+                # Calculate position and color
+                x, y = col * self.square_size, row * self.square_size
+                color = self.light_square if (row + col) % 2 == 0 else self.dark_square
+                
+                # Draw the square
+                pygame.draw.rect(self.screen, color, (x, y, self.square_size, self.square_size))
                 
         # Draw coordinates
         for i in range(8):
@@ -41,51 +41,56 @@ class BoardView:
             self.screen.blit(text, (i * self.square_size + self.square_size - 15, 
                                   8 * self.square_size - 20))
 
-    def draw_pieces(self, board: List[List], images: Dict[str, pygame.Surface]):
-        """Draw the pieces on the board with smooth scaling."""
+    def draw_pieces(self, board, images: Dict[Tuple[str, str], pygame.Surface]):
+        """Draw the chess pieces on the board"""
         for row in range(8):
             for col in range(8):
-                piece = board[row][col]
+                piece = board.get_piece(row, col)
                 if piece:
-                    color, piece_type = piece
-                    key = f"{color}_{piece_type}"
-                    if key in images:
-                        piece_img = images[key]
-                        # Scale image if needed
-                        if piece_img.get_width() != self.square_size:
-                            piece_img = pygame.transform.smoothscale(
-                                piece_img, (self.square_size, self.square_size)
-                            )
-                        self.screen.blit(piece_img, 
-                                       (col * self.square_size, row * self.square_size))
+                    # Get the image for this piece type and color
+                    img_key = (piece.color, piece.type)
+                    if img_key in images:
+                        # Calculate position to center the piece in the square
+                        x = col * self.square_size
+                        y = row * self.square_size
+                        self.screen.blit(images[img_key], (x, y))
                     else:
-                        print(f"Warning: No image for {key}")
-
-    def highlight_square(self, pos: Tuple[int, int], color: Optional[Tuple] = None):
-        """Highlight a square with optional custom color."""
-        col, row = pos
-        s = pygame.Surface((self.square_size, self.square_size), pygame.SRCALPHA)
-        s.fill(color or self.colors["highlight"])
-        self.screen.blit(s, (col * self.square_size, row * self.square_size))
-
-    def draw_legal_moves(self, legal_moves: List[Tuple[int, int]], 
-                        capture_moves: Optional[List[Tuple[int, int]]] = None):
-        """Highlight legal moves, with different indicators for captures."""
-        for move in legal_moves:
-            row, col = move
-            s = pygame.Surface((self.square_size, self.square_size), pygame.SRCALPHA)
+                        # Fallback if image not found: draw a colored rectangle with text
+                        x = col * self.square_size + 5
+                        y = row * self.square_size + 5
+                        size = self.square_size - 10
+                        color = (200, 200, 200) if piece.color == "white" else (50, 50, 50)
+                        pygame.draw.rect(self.screen, color, (x, y, size, size))
+                        
+                        # Add initial of piece type
+                        font = pygame.font.SysFont("Arial", 24)
+                        text = font.render(piece.type[0].upper(), True, 
+                                          (0, 0, 0) if piece.color == "white" else (255, 255, 255))
+                        text_rect = text.get_rect(center=(
+                            x + size // 2,
+                            y + size // 2
+                        ))
+                        self.screen.blit(text, text_rect)
+    
+    def highlight_square(self, square: Tuple[int, int]):
+        """Highlight the selected square"""
+        col, row = square
+        x, y = col * self.square_size, row * self.square_size
+        
+        # Draw a semi-transparent highlight
+        highlight = pygame.Surface((self.square_size, self.square_size), pygame.SRCALPHA)
+        highlight.fill(self.highlight_color)
+        self.screen.blit(highlight, (x, y))
+    
+    def draw_legal_moves(self, moves: List[Tuple[int, int]]):
+        """Draw indicators for legal moves"""
+        for row, col in moves:
+            # Calculate center position of the square
+            x = col * self.square_size + self.square_size // 2
+            y = row * self.square_size + self.square_size // 2
             
-            # Different visualization for capture moves
-            if capture_moves and move in capture_moves:
-                pygame.draw.circle(s, (255, 0, 0, 128), 
-                                 (self.square_size//2, self.square_size//2), 
-                                 self.square_size//3)
-            else:
-                pygame.draw.circle(s, self.colors["legal_move"], 
-                                 (self.square_size//2, self.square_size//2), 
-                                 self.square_size//6)
-                
-            self.screen.blit(s, (col * self.square_size, row * self.square_size))
+            # Draw a circle to indicate a legal move
+            pygame.draw.circle(self.screen, self.move_indicator, (x, y), self.square_size // 6)
 
     def draw_game_status(self, game_state: str, current_turn: str):
         """Draw game status (check, checkmate, stalemate)."""

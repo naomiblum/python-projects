@@ -153,3 +153,7 @@ def animate_move(screen: pygame.Surface, board_view, board, images: Dict,
     
     # Restore the piece at the new position
     board.board[end_pos[1]][end_pos[0]] = temp_piece
+
+# To run the project, execute the following commands in your terminal:
+# cd /Users/naomiblum/Documents/GitHub/python-projects/Chess_Project
+# python main.py
