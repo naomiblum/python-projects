@@ -1,0 +1,92 @@
+# 🧠 FlowSense – The Story Behind the System
+
+> “Hey Naomi, can you check why the team keeps missing internal deadlines?”
+
+That was the message I got one morning.  
+I had just started working as a junior data analyst in a tech team. I didn’t have access to high-level strategy or team meetings — but I did have access to the logs.
+
+📁 So I opened them.
+
+We had:
+- Task start/end timestamps
+- Assignee names
+- Status flags
+- Response and completion times
+
+What we **didn’t have** was insight.
+
+---
+
+## 🧩 The Problem No One Could Describe
+
+The team *looked* productive:  
+Tasks were being marked as done, commits were going through, and everyone seemed busy.
+
+But still —  
+- Deadlines were slipping  
+- People felt blocked  
+- And everyone pointed in different directions
+
+When I asked for clarity, I got answers like:  
+> “I don’t know, something just feels... off.”
+
+---
+
+## 🔍 Asking Better Questions
+
+Instead of asking “what got done?” —  
+I started asking:
+
+- Who gets assigned tasks that loop back to others?
+- Where are tasks sitting longest?
+- Who is responding slower over time?
+- Which patterns are repeating silently?
+
+I wasn’t looking for blame. I was looking for *flow disruption*.
+
+---
+
+## 🧠 FlowSense Was Born
+
+I started writing Python code:
+- Cleaned the data with `pandas`
+- Calculated behavioral KPIs: task lag, response time, throughput
+- Clustered users by behavior (KMeans)
+- Visualized task flows with `seaborn`
+- Exported graphs, patterns, and summaries
+
+I called it **FlowSense** — a behavioral mirror for teams.
+
+---
+
+## 📈 What It Revealed
+
+Some things were surprising, others confirmed what people felt but couldn’t prove:
+
+- Two people were indirectly involved in nearly every delayed task  
+- A feedback loop between two team members caused silent rework  
+- Task volume looked fine, but response time had doubled over 3 weeks  
+- Several “owners” weren’t actually the ones closing tasks
+
+---
+
+## 🔄 The Outcome
+
+After sharing the graphs and insights:
+- Management realigned task distribution
+- Certain bottlenecks were addressed openly
+- The team velocity **increased**, without adding anyone
+
+Most importantly:  
+People felt seen.  
+No one was blamed — just understood.
+
+And me? I realized this is the kind of work I want to keep doing.  
+**FlowSense isn’t just a project. It’s the kind of problem I want to solve.**
+
+---
+
+## 🙋‍♀️ Author
+
+**Naomi Blum**  
+
