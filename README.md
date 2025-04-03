@@ -75,6 +75,9 @@ Each project in this repo is mapped to at least one of these topics.
 
 More projects coming soon...
 
+##librarys For Analytics :
+Faker : a Python library that generates fake data that looks real , being used for making fake data .
+
 
 ## How to Use
 
