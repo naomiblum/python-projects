@@ -13,38 +13,55 @@ This repository is a curated collection of Python projects designed to support a
 - Developers seeking reference implementations for common tasks
 - Anyone building a project portfolio
 
-## Topics Covered (Growing List)
+ה## 📘 Topics Covered (Python Skills Roadmap)
 
-**Beginner**
-- Variables, data types, and operators  
-- Conditional statements and loops  
-- Functions and parameters  
-- Lists, dictionaries, sets, and tuples  
-- File input/output (reading/writing files)  
-- Error handling and debugging (try/except)  
-- Basic modules and importing
+Each project in this repository helps build mastery in real-world Python topics.  
+The topics are organized by skill level: from foundational programming to scalable system design.
 
-**Intermediate**
-- Object-Oriented Programming (classes, inheritance)  
-- Working with external libraries (e.g. `pygame`, `requests`)  
-- Modules and packages  
-- Virtual environments and `requirements.txt`  
-- Decorators and higher-order functions  
-- Working with JSON, CSV and APIs  
-- Simple GUI applications  
-- Unit testing and test-driven development  
-- Using Git and GitHub effectively
+---
 
-**Advanced**
-- Design patterns in Python  
-- Advanced OOP (composition, polymorphism, magic methods)  
-- Generators, iterators and comprehensions  
-- Functional programming (lambda, map/filter/reduce)  
-- Concurrency: multithreading & multiprocessing  
-- Creating and using custom Python packages  
-- Performance profiling and optimization  
-- Writing clean, scalable and maintainable code  
-- Deployment techniques and Docker for Python apps
+### 🟢 Beginner – Python Foundations
+
+- **Variables & Data Types** – numbers, strings, booleans, etc.
+- **Control Flow** – `if` statements, `for` and `while` loops
+- **Functions** – defining, calling, parameters, return values
+- **Collections** – lists, dictionaries, sets, tuples
+- **File I/O** – reading and writing from `.txt` and `.csv` files
+- **Error Handling** – using `try`/`except` to catch exceptions
+- **Basic Imports** – using built-in modules like `math`, `random`
+
+---
+
+### 🟡 Intermediate – Python for Projects
+
+- **Object-Oriented Programming** – classes, inheritance, encapsulation
+- **Working with External Libraries** – e.g. `pygame`, `pandas`, `requests`
+- **Modules & Packages** – organizing code into reusable components
+- **Virtual Environments** – managing dependencies with `venv` and `requirements.txt`
+- **Working with Data Formats** – JSON, CSV, and APIs
+- **Decorators & Higher-Order Functions** – passing and returning functions
+- **Simple GUI Apps** – using `pygame`, `tkinter`, or `streamlit`
+- **Unit Testing** – writing tests with `unittest` and TDD principles
+- **Git & GitHub** – version control, branches, pull requests
+
+---
+
+### 🔴 Advanced – Python for Scalable Systems
+
+- **Design Patterns** – Singleton, Factory, Strategy, etc.
+- **Advanced OOP** – composition, polymorphism, magic methods (`__init__`, `__str__`, etc.)
+- **Functional Programming** – `lambda`, `map`, `filter`, `reduce`
+- **Generators & Iterators** – memory-efficient data flows
+- **Concurrency** – `threading`, `multiprocessing`, `asyncio`
+- **Custom Python Packages** – structuring and publishing your own libraries
+- **Performance Optimization** – profiling, bottlenecks, efficient code
+- **Clean Code & Architecture** – SOLID principles, documentation, readability
+- **Deployment & Containers** – packaging with Docker, running apps on servers
+
+---
+
+✅ *Each project in this repo targets specific topics from this list — you can use it to track your learning journey and growth as a Python developer.*
+
 
 ---
 
