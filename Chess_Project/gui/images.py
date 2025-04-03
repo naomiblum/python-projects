@@ -19,6 +19,7 @@ def load_piece_images(square_size):
             except FileNotFoundError:
                 print(f"Error: Missing file {path}")
     return images
+=======
 
 def save_game_state(game_state, filename="saved_game.json"):
     """

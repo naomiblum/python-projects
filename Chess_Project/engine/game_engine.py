@@ -1,7 +1,7 @@
+from Chess_Project.engine.board import Board
 from .board import Board
 from .piece import Piece
 from typing import Optional, Tuple, List, Dict, Any
-
 class GameEngine:
     """
     Advanced game engine for chess with comprehensive rule enforcement
@@ -23,6 +23,8 @@ class GameEngine:
         self.fullmove_number = 1  # Increments after black's move
         
     def initialize_game(self):
+        # Game initialization logic here
+        pass
         """Reset the game to its initial state."""
         self.board = Board()
         self.current_turn = "white"
@@ -399,3 +401,4 @@ class GameEngine:
         except (KeyError, IndexError) as e:
             print(f"Error loading game state: {e}")
             return False
+
